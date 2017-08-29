@@ -1,0 +1,45 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Your decision.
+{% endblock %}
+
+{% block content %}
+<p align="justify">
+
+    Welcome to the experiment.
+    It will take you about 5 minutes and you will earn {{Constants.show_up_fee}} just for participating,
+    and an additional bonus depending on the decisions that you and the participants in your cohort will make.
+    Each one of you will have to decide to join either Group A or Group B.
+    Your bonus depends on the group you decide to join and on the size of the two groups, A and B, as follows:
+
+    <table class="table table-bordered text-center" style="width: auto; margin: auto">
+    <tr>
+        <th>Size of Group A</th>
+        <th>Payoff of A</th>
+        <th>Payoff of B</th>
+    </tr>
+
+    {% for fila in data %}
+        <tr>
+            {% for columna in fila %}
+                <td>{{ columna }}</td>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+
+    <tr>
+        <td>> {{Constants.xf_A}}</td>
+        <td>{{Constants.yf_A}}</td>
+        <td>{{Constants.yf_B}}</td>
+    </tr>
+
+    </table>
+
+</p>
+    <h3>Which group do you want to join?</h3>
+    {% formfield player.choice %}
+    {% next_button %}
+
+{% endblock %}

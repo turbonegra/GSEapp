@@ -1,0 +1,22 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Welcome to the experiment
+{% endblock %}
+
+{% block content %}
+
+<p align="justify">
+    In the next pages, you will be presented the instructions of the experiment, followed by a set of practical examples that will help you to understand
+    the instructions. This questions will  not be paid and will not ave any effect whatsoever in your future earnings in the experiment. The instructions will
+    remain available during the whole experiment.
+
+<br></br>
+
+    Please, click "Next" when you are ready to continue.
+</p>
+
+    {% next_button %}
+
+{% endblock %}

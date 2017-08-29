@@ -2,12 +2,38 @@
 {% load staticfiles otree_tags %}
 
 {% block title %}
-    Page title
+    {% if player.automatic_decision == False %}
+    Results.
+    {% else %}
+    <p ALIGN=justify>
+    The experiment has ended for you.
+        {% endif %}
+    </p>
 {% endblock %}
 
 {% block content %}
+<p align="justify">
+<center> <img src={% static "GSEapp/ibsen_header.png" %} height="90%" width="90%"/> </center>
+</p>
+	<br></br>
+	<br></br>
+{% if player.automatic_decision == False %}
+<p>
+    Yor decision was {{player.choice}}. There were other {{player.size_group}} people that chose {{player.choice}} in you group. Therefore your earnings
+    are {{player.payoff|floatformat:"0"}} points.
+</p>
+<p> The conversion rate from points to Euros is {{rate|floatformat:"2"}} points = 1 EUR. You have earned {{player.payment}} Euros that will be given to
+you only if you finish the following waves.
+<br></br>
+<p>
+    This wave of the experiment has finished. Thank you very much for making it possible. See you soon in the next wave.
+</p>
 
-    {% next_button %}
+{% else %}
+<p>You forgot to make your decision, so the experiment has ended for you.</p>
+
+{% endif %}
+
 {% endblock %}
 
 
